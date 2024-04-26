@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+  web:
+    build: .
+    restart: unless-stopped
+    ports:
+      - 8000:8000
+    volumes:
+      - type: bind
+        source: ./todo/db.sqlite3
+        target: /app/db.sqlite3

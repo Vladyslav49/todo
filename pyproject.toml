@@ -1,14 +1,13 @@
 [tool.poetry]
 name = "todo"
 version = "0.1.0"
-description = ""
+description = "Django ToDo app"
 authors = ["Vladyslav Timofeev <Timofeevvladyslav49@gmail.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.12"
 django = "^5.0.4"
-django-stubs = "^4.2.7"
 
 [tool.poetry.group.dev]
 optional = true
@@ -17,6 +16,7 @@ optional = true
 ruff = "^0.4.2"
 mypy = "^1.10.0"
 pre-commit = "^3.7.0"
+django-stubs = "^4.2.7"
 
 [tool.ruff]
 force-exclude = true
