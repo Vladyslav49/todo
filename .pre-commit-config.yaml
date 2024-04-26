@@ -1,0 +1,28 @@
+fail_fast: true
+repos:
+  - repo: local
+    hooks:
+      - id: format
+        name: format
+        entry: ruff format --diff
+        language: python
+        types:
+          - python
+        additional_dependencies:
+          - ruff
+      - id: lint
+        name: lint
+        entry: ruff check
+        language: python
+        types:
+          - python
+        additional_dependencies:
+          - ruff
+      - id: type-check
+        name: type-check
+        entry: mypy --ignore-missing-imports
+        language: python
+        types:
+          - python
+        additional_dependencies:
+          - mypy
