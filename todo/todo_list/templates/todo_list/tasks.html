@@ -1,11 +1,14 @@
 {% extends "base.html" %}
-{% load static %}
 
 {% block title %}
 Tasks
 {% endblock %}
 
 {% block body %}
+<form method="POST" action="{% url 'logout' %}">
+    {% csrf_token %}
+    <button type="submit">Logout</button>
+</form>
 <h1>Tasks</h1>
 <ul>
     {% for task in tasks %}
