@@ -79,4 +79,4 @@ jobs:
         run: poetry install
 
       - name: Run tests
-        run: poetry run python todo/manage.py test todo_list
+        run: poetry run python todo/manage.py test todo_list user
