@@ -1,6 +1,5 @@
 from http import HTTPStatus
 
-from django.http import HttpResponseRedirect
 from django.test import TestCase
 from django.urls import reverse
 
@@ -15,7 +14,9 @@ class TestTodoList(TestCase):
 
         self.assertEqual(response.status_code, HTTPStatus.OK)
         self.assertTemplateUsed(response, "todo_list/tasks.html")
-        self.assertQuerysetEqual(response.context["tasks"], Task.objects.none())
+        self.assertQuerysetEqual(
+            response.context["tasks"], Task.objects.none()
+        )
 
     def test_index_not_empty(self) -> None:
         index_url = reverse("index")
@@ -57,7 +58,10 @@ class TestTodoList(TestCase):
         create_task_url = reverse("create-task")
         task_url = reverse("task", args=[1])
 
-        response = self.client.post(create_task_url, data={"title": "Title", "description": "Description"})
+        response = self.client.post(
+            create_task_url,
+            data={"title": "Title", "description": "Description"},
+        )
 
         self.assertRedirects(response, expected_url=task_url)
 
