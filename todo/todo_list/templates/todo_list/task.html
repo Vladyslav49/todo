@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+Task
+{% endblock %}
+
+{% block body %}
+{% include "todo_list/includes/navbar.html" %}
+<h1>{{ task.title }}</h1>
+<p>Description: {{ task.description }}</p>
+<p>Created At: {{ task.created_at }}</p>
+
+{% if not task.is_completed %}
+    <form method="POST" action="{% url 'complete-task' task.id %}">
+        {% csrf_token %}
+        <button type="submit">Mark as completed</button>
+    </form>
+{% else %}
+    <p>Due At: {{ task.due_at }}</p>
+{% endif %}
+
+<form method="POST" action="{% url 'delete-task' task.id %}">
+    {% csrf_token %}
+    <button type="submit">Delete</button>
+</form>
+{% endblock %}

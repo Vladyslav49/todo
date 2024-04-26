@@ -1,0 +1,12 @@
+{% block title %}
+Create task
+{% endblock %}
+
+{% block body %}
+{% include "todo_list/includes/navbar.html" %}
+<form method="POST" action="{% url 'create-task' %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Create">
+</form>
+{% endblock %}
